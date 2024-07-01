@@ -12,6 +12,7 @@ analyzer:
     avoid_renaming_method_parameters: ignore
     prefer_const_constructors: ignore
     sort_child_properties_last: ignore ignore
+    unused_import: ignore
 include: package:flutter_lints/flutter.yaml
 
 linter:
