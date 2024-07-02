@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class WelcomeButton extends StatelessWidget {
   const WelcomeButton(
-      {super.key, this.buttonText, this.onTap, this.color, this.textcolor});
+      {super.key, this.buttonText, this.onTap, this.color, this.textColor});
   final String? buttonText;
   final Widget? onTap;
   final Color? color;
