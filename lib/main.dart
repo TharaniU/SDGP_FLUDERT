@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:sdgp_fludert/screens/welcome_screen.dart';
+import 'package:sdgp_fludert/screens/signup_screen.dart';
 
 void main() {
   runApp(const MyApp());
