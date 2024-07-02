@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -49,6 +50,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       const SizedBox(
                         height: 40.0,
                       ),
+                      //User Name
                       TextFormField(
                         validator: (value) {
                           if (value == null || value.isEmpty) {
@@ -73,16 +75,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       const SizedBox(
                         height: 25.0,
                       ),
+                      //Email
                      TextFormField(
                         validator: (value) {
                           if (value == null || value.isEmpty) {
-                            return 'Please enter Full name';
+                            return 'Please enter Email';
                           }
                           return null;
                         },
                         decoration: InputDecoration(
-                          label: const Text('Full Name'),
-                          hintText: 'Enter Full Name',
+                          label: const Text('Email'),
+                          hintText: 'Enter Email',
                           hintStyle: const TextStyle(
                             color: Colors.black26,
                           ),
@@ -97,15 +100,177 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       const SizedBox(
                         height: 25.0,
                       ), 
+                      //password
+                      TextFormField(
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please enter Password';
+                          }
+                          return null;
+                        },
+                        decoration: InputDecoration(
+                          label: const Text('Password'),
+                          hintText: 'Enter Password',
+                          hintStyle: const TextStyle(
+                            color: Colors.black26,
+                          ),
+                          border: OutlineInputBorder(
+                            borderSide: const BorderSide(
+                              color: Colors.black12,
+                            ),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 25.0,
+                      ),
+                      //terms&conditions
+                      Row(
+                        children: [
+                          Checkbox(
+                            value: agreePersonalData,
+                            onChanged: (bool? value) {
+                              setState(() {
+                                agreePersonalData = value!;
+                              });
+                            },
+                            activeColor: lightColorScheme.primary,
+                          ),
+                          const Text(
+                            'I agree to the processing of ',
+                            style: TextStyle(
+                              color: Colors.black45,
+                            ),
+                          ),
+                          Text(
+                            'Personal Data',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: lightColorScheme.primary,
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 25.0,
+                      ),
+                      //Signup Button
+                      SizedBox(
+                        width: double.infinity,
+                        child: ElevatedButton(
+                          onPressed: () {
+                            if (_fromSignupKey.currentState!.validate() && 
+                            agreePersonalData) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                  content: Text(
+                                    'Processin data'
+                                  ),
+                                ),
+                              );
+                            } else if (!agreePersonalData) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                  content: Text (
+                                    'Please agree to the processing of personal data'
+                                  )
+                                ),
+                              );
+                          },
+                          child: const Text('Sign Up'),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 30.0,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Expanded(
+                            child: Divider (
+                              thickness: 0.7,
+                              color: Colors.grey.withOpacity(0.5),
+                            ),
+                          ),
+                          const Padding(
+                            padding: EdgeInsets.symmetric(
+                              vertical: 0,
+                              horizontal: 10,
+                            ),
+                            child: Text(
+                              'Sign Up With',
+                              style: TextStyle(
+                                color: Colors.black45,
+                              ),
+                            ),
+                          ),
+                          Expanded(
+                            child: Divider(
+                              thickness: 0.7,
+                              color: Colors.grey.withOpacity(0.5),
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 30.0,
+                      ),
+
+                      //social media logo
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Logo(Logos.facebook_f),
+                          Logo(Logos.twitter),
+                          Logo(Logos.google),
+                          Logo(Logos.apple),                        
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 25.0,
+                      ),
+
+                      //if already have an account
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Text(
+                            'Already have an account?',
+                            style: TextStyle(
+                              color: Colors.black45,
+                            ),
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (e) => const SignInScreen(),
+                                ),
+                              );
+                            },
+                            child: Text(
+                              'Sign In',
+                              style:TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: lightColorScheme.primary,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 20.0,
+                      ),
                     ],
                   ),
                 ),
               ),
-              ),
             ),
-          )
+          ),          
         ],
-      )
-    )
+      ),
+    );
   }
 }
