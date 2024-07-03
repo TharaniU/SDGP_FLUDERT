@@ -4,17 +4,16 @@ import 'package:sdgp_fludert/theme/theme.dart';
 import 'package:sdgp_fludert/widgets/custom_scaffold.dart';
 import 'package:icons_plus/icons_plus.dart';
 
-class SigninScreen extends StatefulWidget {
-  const SigninScreen({super.key});
+class SignInScreen extends StatefulWidget {
+  const SignInScreen({super.key});
 
   @override
-  State<SigninScreen> createState() => _SignInScreenState();
+  State<SignInScreen> createState() => _SignInScreenState();
 }
 
-class _SignInScreenState extends State<SigninScreen> {
+class _SignInScreenState extends State<SignInScreen> {
   final _formSignInKey = GlobalKey<FormState>();
   bool rememberPassword = true;
-
   @override
   Widget build(BuildContext context) {
     return CustomScaffold(
@@ -44,7 +43,7 @@ class _SignInScreenState extends State<SigninScreen> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Text(
-                        'Welcome Back',
+                        'Welcome back',
                         style: TextStyle(
                           fontSize: 30.0,
                           fontWeight: FontWeight.w900,
@@ -57,7 +56,7 @@ class _SignInScreenState extends State<SigninScreen> {
                       TextFormField(
                         validator: (value) {
                           if (value == null || value.isEmpty) {
-                            return 'Please enter your Email';
+                            return 'Please enter Email';
                           }
                           return null;
                         },
@@ -69,7 +68,13 @@ class _SignInScreenState extends State<SigninScreen> {
                           ),
                           border: OutlineInputBorder(
                             borderSide: const BorderSide(
-                              color: Colors.black12,
+                              color: Colors.black12, // Default border color
+                            ),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: const BorderSide(
+                              color: Colors.black12, // Default border color
                             ),
                             borderRadius: BorderRadius.circular(10),
                           ),
@@ -83,19 +88,25 @@ class _SignInScreenState extends State<SigninScreen> {
                         obscuringCharacter: '*',
                         validator: (value) {
                           if (value == null || value.isEmpty) {
-                            return 'Please Enter Password';
+                            return 'Please enter Password';
                           }
                           return null;
                         },
                         decoration: InputDecoration(
                           label: const Text('Password'),
                           hintText: 'Enter Password',
-                          helperStyle: const TextStyle(
+                          hintStyle: const TextStyle(
                             color: Colors.black26,
                           ),
                           border: OutlineInputBorder(
                             borderSide: const BorderSide(
-                              color: Colors.black12,
+                              color: Colors.black12, // Default border color
+                            ),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: const BorderSide(
+                              color: Colors.black12, // Default border color
                             ),
                             borderRadius: BorderRadius.circular(10),
                           ),
@@ -119,16 +130,16 @@ class _SignInScreenState extends State<SigninScreen> {
                                 activeColor: lightColorScheme.primary,
                               ),
                               const Text(
-                                'Remember Me',
+                                'Remember me',
                                 style: TextStyle(
                                   color: Colors.black45,
                                 ),
-                              )
+                              ),
                             ],
                           ),
                           GestureDetector(
                             child: Text(
-                              'Forget Password?',
+                              'Forget password?',
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: lightColorScheme.primary,
@@ -144,15 +155,22 @@ class _SignInScreenState extends State<SigninScreen> {
                         width: double.infinity,
                         child: ElevatedButton(
                           onPressed: () {
-                            if (_formSignInKey.currentState!.validate()) {
+                            if (_formSignInKey.currentState!.validate() &&
+                                rememberPassword) {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 const SnackBar(
-                                  content: Text('Sign In successful'),
+                                  content: Text('Processing Data'),
                                 ),
+                              );
+                            } else if (!rememberPassword) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                    content: Text(
+                                        'Please agree to the processing of personal data')),
                               );
                             }
                           },
-                          child: const Text('Sign In'),
+                          child: const Text('Sign up'),
                         ),
                       ),
                       const SizedBox(
@@ -173,7 +191,7 @@ class _SignInScreenState extends State<SigninScreen> {
                               horizontal: 10,
                             ),
                             child: Text(
-                              'Sign In with',
+                              'Sign up with',
                               style: TextStyle(
                                 color: Colors.black45,
                               ),
@@ -193,7 +211,7 @@ class _SignInScreenState extends State<SigninScreen> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          Icon(BoxIcons.bxl_apple),
+                          Logo(Logos.facebook_f),
                           Logo(Logos.twitter),
                           Logo(Logos.google),
                           Logo(Logos.apple),
@@ -202,11 +220,12 @@ class _SignInScreenState extends State<SigninScreen> {
                       const SizedBox(
                         height: 25.0,
                       ),
+                      // don't have an account
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           const Text(
-                            'Don\'t have an account?',
+                            'Don\'t have an account? ',
                             style: TextStyle(
                               color: Colors.black45,
                             ),
@@ -221,7 +240,7 @@ class _SignInScreenState extends State<SigninScreen> {
                               );
                             },
                             child: Text(
-                              'Sign Up',
+                              'Sign up',
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: lightColorScheme.primary,
