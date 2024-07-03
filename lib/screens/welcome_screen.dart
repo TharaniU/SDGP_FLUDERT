@@ -1,5 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:sdgp_fludert/screens/signup_screen.dart';
+import 'package:sdgp_fludert/theme/theme.dart';
+import 'package:sdgp_fludert/widgets/welcome_button.dart';
+import 'package:sdgp_fludert/screens/signin_screen.dart';
+//import 'package:login_signup/widgets/custom_scaffold.dart';
+
+import '../widgets/custom_scaffold.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});

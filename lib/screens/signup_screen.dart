@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-
+import 'package:sdgp_fludert/theme/theme.dart';
+import 'package:sdgp_fludert/screens/signin_screen.dart';
+import 'package:icons_plus/icons_plus.dart';
+import 'package:sdgp_fludert/widgets/custom_scaffold.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -39,14 +42,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Text(
-                        'Get Started',
-                        style: TextStyle(
-                          fontSize: 30.0,
-                          fontWeight: FontWeight.w900,
-                          color: lightColorScheme.primary,
-                        )
-                      ),
+                      Text('Get Started',
+                          style: TextStyle(
+                            fontSize: 30.0,
+                            fontWeight: FontWeight.w900,
+                            color: lightColorScheme.primary,
+                          )),
                       const SizedBox(
                         height: 40.0,
                       ),
@@ -76,7 +77,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         height: 25.0,
                       ),
                       //Email
-                     TextFormField(
+                      TextFormField(
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return 'Please enter Email';
@@ -99,7 +100,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       ),
                       const SizedBox(
                         height: 25.0,
-                      ), 
+                      ),
                       //password
                       TextFormField(
                         validator: (value) {
@@ -160,23 +161,20 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         width: double.infinity,
                         child: ElevatedButton(
                           onPressed: () {
-                            if (_fromSignupKey.currentState!.validate() && 
-                            agreePersonalData) {
+                            if (_fromSignupKey.currentState!.validate() &&
+                                agreePersonalData) {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 const SnackBar(
-                                  content: Text(
-                                    'Processin data'
-                                  ),
+                                  content: Text('Processin data'),
                                 ),
                               );
                             } else if (!agreePersonalData) {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 const SnackBar(
-                                  content: Text (
-                                    'Please agree to the processing of personal data'
-                                  )
-                                ),
+                                    content: Text(
+                                        'Please agree to the processing of personal data')),
                               );
+                            }
                           },
                           child: const Text('Sign Up'),
                         ),
@@ -188,7 +186,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Expanded(
-                            child: Divider (
+                            child: Divider(
                               thickness: 0.7,
                               color: Colors.grey.withOpacity(0.5),
                             ),
@@ -224,7 +222,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           Logo(Logos.facebook_f),
                           Logo(Logos.twitter),
                           Logo(Logos.google),
-                          Logo(Logos.apple),                        
+                          Logo(Logos.apple),
                         ],
                       ),
                       const SizedBox(
@@ -252,7 +250,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             },
                             child: Text(
                               'Sign In',
-                              style:TextStyle(
+                              style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: lightColorScheme.primary,
                               ),
@@ -269,7 +267,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
               ),
             ),
           ),
-          
         ],
       ),
     );
