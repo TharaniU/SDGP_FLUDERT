@@ -12,8 +12,9 @@ class SigninScreen extends StatefulWidget {
 }
 
 class _SignInScreenState extends State<SigninScreen> {
-  final _fromSignInKey = GlobalKey<FormState>();
+  final _formSignInKey = GlobalKey<FormState>();
   bool rememberPassword = true;
+
   @override
   Widget build(BuildContext context) {
     return CustomScaffold(
@@ -38,7 +39,7 @@ class _SignInScreenState extends State<SigninScreen> {
               ),
               child: SingleChildScrollView(
                 child: Form(
-                  key: _fromSignInKey,
+                  key: _formSignInKey,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
@@ -55,7 +56,7 @@ class _SignInScreenState extends State<SigninScreen> {
                       ),
                       TextFormField(
                         validator: (value) {
-                          if (value == null || value.isNotEmpty) {
+                          if (value == null || value.isEmpty) {
                             return 'Please enter your Email';
                           }
                           return null;
@@ -130,7 +131,7 @@ class _SignInScreenState extends State<SigninScreen> {
                               'Forget Password?',
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: lightClorScheme.primary,
+                                color: lightColorScheme.primary,
                               ),
                             ),
                           ),
@@ -143,16 +144,15 @@ class _SignInScreenState extends State<SigninScreen> {
                         width: double.infinity,
                         child: ElevatedButton(
                           onPressed: () {
-                            if (_fromSignInKey.currentState!.validate() &&
-                                rememberPassword) {
+                            if (_formSignInKey.currentState!.validate()) {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 const SnackBar(
-                                    content: Text(
-                                        'Please agree to the processing of personal data')),
+                                  content: Text('Sign In successful'),
+                                ),
                               );
                             }
                           },
-                          child: const Text('Sign Up'),
+                          child: const Text('Sign In'),
                         ),
                       ),
                       const SizedBox(
@@ -173,7 +173,7 @@ class _SignInScreenState extends State<SigninScreen> {
                               horizontal: 10,
                             ),
                             child: Text(
-                              'Sign Up with',
+                              'Sign In with',
                               style: TextStyle(
                                 color: Colors.black45,
                               ),
@@ -193,7 +193,7 @@ class _SignInScreenState extends State<SigninScreen> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          Logo(Logos.facebook_f),
+                          Icon(BoxIcons.bxl_apple),
                           Logo(Logos.twitter),
                           Logo(Logos.google),
                           Logo(Logos.apple),
