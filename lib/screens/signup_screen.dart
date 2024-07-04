@@ -240,7 +240,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         height: 30.0,
                       ),
                       // sign up social media logo
-                      Row(
+                      /* Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           Logo(Logos.facebook_f),
@@ -248,7 +248,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           Logo(Logos.google),
                           Logo(Logos.apple),
                         ],
-                      ),
+                      ),*/
                       const SizedBox(
                         height: 25.0,
                       ),

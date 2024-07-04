@@ -208,7 +208,7 @@ class _SignInScreenState extends State<SignInScreen> {
                       const SizedBox(
                         height: 25.0,
                       ),
-                      Row(
+                      /*Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           Logo(Logos.facebook_f),
@@ -216,7 +216,7 @@ class _SignInScreenState extends State<SignInScreen> {
                           Logo(Logos.google),
                           Logo(Logos.apple),
                         ],
-                      ),
+                      ),*/
                       const SizedBox(
                         height: 25.0,
                       ),
