@@ -27,14 +27,16 @@ class WelcomeScreen extends StatelessWidget {
                 text: const TextSpan(
                   children: [
                     TextSpan(
-                        text: 'Welcome',
+                        text: 'Welcome\n',
                         style: TextStyle(
                           fontSize: 45.0,
                           fontWeight: FontWeight.w600,
+                          color: Color.fromARGB(255, 5, 42, 121),
                         )),
                     TextSpan(
-                        text: 'Enter your details',
+                        text: 'Enter your details and login to FLUDERT',
                         style: TextStyle(
+                          color: Color.fromARGB(255, 5, 42, 121),
                           fontSize: 20,
                         ))
                   ],
