@@ -30,7 +30,7 @@ class _SignInScreenState extends State<SignInScreen> {
             child: Container(
               padding: const EdgeInsets.fromLTRB(25.0, 50.0, 25.0, 20.0),
               decoration: const BoxDecoration(
-                color: Colors.white,
+                color: Color.fromARGB(255, 230, 63, 63),
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(40.0),
                   topRight: Radius.circular(40.0),
